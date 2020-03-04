@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
 @EntityScan("com.example.blog.bean")//扫描实体
-//@ComponentScan(basePackages = {"com.example.blog"})//扫描所有类
 public class BlogApplication {
 
     public static void main(String[] args) {
