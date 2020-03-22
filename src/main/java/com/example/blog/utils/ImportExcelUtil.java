@@ -116,6 +116,11 @@ public class ImportExcelUtil {
                 obj = clazz.newInstance();
                 for (int j = 0; j < filedsRow.getLastCellNum(); j++) {
                     attribute = getCellValue(filedsRow.getCell(j));
+                    int indexOf = attribute.indexOf('(');
+                    int lastIndexOf = attribute.lastIndexOf(')');
+                    if(indexOf != -1 && lastIndexOf != -1 ){ // 说明有属性值
+                        attribute = attribute.substring(indexOf+1,lastIndexOf);
+                    }
                     if (!attribute.equals("")) {
                         value = getCellValue(row.getCell(j));
                         setAttrributeValue(obj, attribute, value, datePattern);
