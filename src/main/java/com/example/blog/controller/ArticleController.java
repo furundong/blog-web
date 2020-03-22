@@ -8,16 +8,17 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class ArticleController {
+public class ArticleController<E> {
 
     @Autowired
     ArticleService articleService;
 
     @GetMapping("/test")
-    public String test(){
+    public String test() {
         List list =
                 articleService.findList();
         System.out.println("list = " + list);
         return "test：“";
     }
+
 }
