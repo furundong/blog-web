@@ -1,4 +1,4 @@
-package com.example.blog.bean;
+package com.example.blog.entity.response;
 
 import lombok.Data;
 

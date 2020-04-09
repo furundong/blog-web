@@ -1,7 +1,7 @@
 package com.example.blog.service;
 
-import com.example.blog.bean.Article;
-import com.example.blog.dao.ArticleRepository;
+import com.example.blog.entity.Article;
+import com.example.blog.dao.ArticleDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +11,9 @@ import java.util.List;
 public class ArticleService {
 
     @Autowired
-    ArticleRepository articleRepository;
+    ArticleDao articleDao;
 
     public List<Article> findList(){
-        return articleRepository.findAll();
+        return articleDao.findAll();
     }
 }

@@ -1,4 +1,4 @@
-package com.example.blog.bean;
+package com.example.blog.entity;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
@@ -12,18 +12,22 @@ import java.sql.Timestamp;
 @Data
 @Entity
 @Table
-public class User {
+public class Article {
     @Id
     @GenericGenerator(name = "idGenerator", strategy = "uuid")
     @GeneratedValue(generator = "idGenerator")
     private String id;
-    private String username;
-    private String password;
+    private String title;
+    private String mdContent;
+    private String htmlContent;
+    private String summary;
+    private Long cid;
+    private Long uid;
+    private Timestamp publishDate;
+    private Integer state;
+    private Integer pageView;
+    private Timestamp editTime;
     private String nickname;
-    private boolean enabled;
-//    private List<Role> roles;
-    private String email;
-    private String userface;
-    private Timestamp regTime;
-
+    private String cateName;
+    private String stateStr;
 }

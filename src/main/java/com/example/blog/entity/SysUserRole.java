@@ -1,4 +1,4 @@
-package com.example.blog.bean;
+package com.example.blog.entity;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
@@ -9,13 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Data
-@Entity
 @Table
-public class Role {
-    @Id
-    @GenericGenerator(name = "idGenerator", strategy = "uuid")
-    @GeneratedValue(generator = "idGenerator")
-    private String id;
-    private String name;
+@Entity
+public class SysUserRole {
+
+  @Id
+  @GenericGenerator(name = "idGenerator", strategy = "uuid")
+  @GeneratedValue(generator = "idGenerator")
+  private String uid;
+  private String rid;
 
 }

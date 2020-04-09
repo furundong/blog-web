@@ -1,6 +1,4 @@
-package com.example.blog.bean.response;
-
-import lombok.Data;
+package com.example.blog.entity.response;
 
 /**
  * 公共的返回码

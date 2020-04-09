@@ -1,7 +1,7 @@
 package com.example.blog.config;
 
-import com.example.blog.bean.response.Result;
-import com.example.blog.bean.response.ResultCode;
+import com.example.blog.entity.response.Result;
+import com.example.blog.entity.response.ResultCode;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;

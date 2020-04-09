@@ -1,7 +1,7 @@
 package com.example.blog.controller;
 
-import com.example.blog.bean.Category;
-import com.example.blog.bean.response.Result;
+import com.example.blog.entity.Category;
+import com.example.blog.entity.response.Result;
 import com.example.blog.service.CategoryService;
 import com.example.blog.utils.ExcelUtils;
 import org.springframework.beans.factory.annotation.Autowired;

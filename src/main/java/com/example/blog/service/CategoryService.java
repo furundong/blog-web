@@ -1,10 +1,10 @@
 package com.example.blog.service;
 
-import com.example.blog.bean.Category;
-import com.example.blog.bean.response.PageResult;
-import com.example.blog.bean.response.Result;
-import com.example.blog.bean.response.ResultCode;
-import com.example.blog.dao.CategoryRepository;
+import com.example.blog.entity.Category;
+import com.example.blog.entity.response.PageResult;
+import com.example.blog.entity.response.Result;
+import com.example.blog.entity.response.ResultCode;
+import com.example.blog.dao.CategoryDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,10 +17,10 @@ import java.util.List;
 public class CategoryService {
 
     @Autowired
-    CategoryRepository categoryRepository;
+    CategoryDao categoryDao;
 
     public Result add(Category category) {
-        Category save = categoryRepository.save(category);
+        Category save = categoryDao.save(category);
         if (save == null) {
             throw new RuntimeException();
         }
@@ -31,14 +31,14 @@ public class CategoryService {
         PageRequest of = PageRequest.of(pageNum - 1, pageSize);
         Page<Category> all;
         if (StringUtils.isEmpty(cateName)) {  // not have condition
-            all = categoryRepository.findAll(of);
+            all = categoryDao.findAll(of);
         } else
-            all = categoryRepository.findByCateNameContaining(cateName, of);
+            all = categoryDao.findByCateNameContaining(cateName, of);
         return new Result(ResultCode.SUCCESS, new PageResult<>(all.getTotalElements(), all.getContent()));
     }
 
     public Result update(Category category) {
-        Category save = categoryRepository.save(category);
+        Category save = categoryDao.save(category);
         if (save == null) {
             throw new RuntimeException();
         }
@@ -46,12 +46,12 @@ public class CategoryService {
     }
 
     public Result delete(String id) {
-        categoryRepository.deleteById(id);
+        categoryDao.deleteById(id);
         return new Result(ResultCode.SUCCESS);
     }
 
     public Result batchDelete(List<String> ids) {
-        categoryRepository.deleteByIdIn(ids);
+        categoryDao.deleteByIdIn(ids);
         return new Result(ResultCode.SUCCESS);
     }
 

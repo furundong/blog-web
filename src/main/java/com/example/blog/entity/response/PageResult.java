@@ -1,4 +1,4 @@
-package com.example.blog.bean.response;
+package com.example.blog.entity.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
