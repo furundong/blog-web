@@ -18,8 +18,9 @@ public class BlogApplicationTests {
     @Test
     public void testPasswordEncoder() {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        String amdin = bCryptPasswordEncoder.encode("admin");
+        String amdin = bCryptPasswordEncoder.encode("test");
         System.out.println("amdin = " + amdin);
+
     }
 
 }

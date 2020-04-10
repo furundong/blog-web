@@ -17,7 +17,7 @@ import java.util.List;
 public interface SysRoleDao  extends JpaRepository<SysRole,String> {
 
     @Query(value = "SELECT r.ROLE_NAME  FROM sys_user u, sys_user_role ur , sys_role r\n" +
-            "WHERE u.id = ur.uid and  r.id = ur.rid and  u.id = 1",nativeQuery = true)
+            "WHERE u.id = ur.uid and  r.id = ur.rid and  u.id = :uid",nativeQuery = true)
     List<String> findRoleByUserId(String uid);
 
     @Modifying

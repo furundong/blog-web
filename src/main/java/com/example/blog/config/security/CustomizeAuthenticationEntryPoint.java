@@ -1,4 +1,4 @@
-package com.example.blog.config;
+package com.example.blog.config.security;
 
 import com.alibaba.fastjson.JSON;
 import com.example.blog.entity.response.Result;

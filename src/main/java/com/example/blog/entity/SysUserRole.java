@@ -16,6 +16,8 @@ public class SysUserRole {
   @Id
   @GenericGenerator(name = "idGenerator", strategy = "uuid")
   @GeneratedValue(generator = "idGenerator")
+  private  String id;
+
   private String uid;
   private String rid;
 

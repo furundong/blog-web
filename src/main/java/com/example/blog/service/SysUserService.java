@@ -21,7 +21,7 @@ import java.util.List;
  * @since 2020-04-09 14:04:47
  */
 @Service
-public class SysUserService implements UserDetailsService {
+public class  SysUserService implements UserDetailsService {
 
     @Resource
     SysUserDao sysUserDao;
@@ -30,8 +30,8 @@ public class SysUserService implements UserDetailsService {
     SysRoleDao sysRoleDao;
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        SysUser byUsername = sysUserDao.findByUsername(s);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        SysUser byUsername = sysUserDao.findByUsername(username);
         if(byUsername==null){
             throw new UsernameNotFoundException("用户名不存在");
         }
@@ -40,6 +40,12 @@ public class SysUserService implements UserDetailsService {
         for (String s1 : roleByUserId) {
             authorities.add(new SimpleGrantedAuthority(s1));
         }
-        return new User(byUsername.getUsername(),byUsername.getPassword(),authorities);
+        return new User(byUsername.getUsername(),
+                byUsername.getPassword(),
+                byUsername.getStatus()==1, //账号是否可用,1为可用，其余为不可用
+                true,//账号是否过期
+                true,//密码是否过期
+                true,//账号是否被锁
+                authorities);
     }
 }
