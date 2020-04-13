@@ -60,6 +60,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Resource
     CustomizeAbstractSecurityInterceptor securityInterceptor;
 
+    //权限不足拦截器
+    CustomizeAccessDeniedHandler customizeAccessDeniedHandler;
+
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -83,6 +86,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         })
                 //异常处理(权限拒绝、登录失效等)
                 .and().exceptionHandling().authenticationEntryPoint(authenticationEntryPoint)//匿名用户访问无权限资源时的异常处理
+                //权限不足异常处理
+                .and().exceptionHandling().accessDeniedHandler(customizeAccessDeniedHandler)
                 //登入
                 .and().formLogin().permitAll()//允许所有用户
                 .successHandler(authenticationSuccessHandler)//登录成功处理逻辑

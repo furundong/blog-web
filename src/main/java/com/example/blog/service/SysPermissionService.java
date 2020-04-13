@@ -1,9 +1,11 @@
 package com.example.blog.service;
 
 
+import com.example.blog.dao.SysPermissionDao;
 import com.example.blog.entity.SysPermission;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -15,7 +17,13 @@ import java.util.List;
 @Service
 public class SysPermissionService {
 
+    @Resource
+    SysPermissionDao sysPermissionDao;
+
     public List<SysPermission> selectListByPath(String requestUrl) {
-        return null;
+        if (requestUrl.indexOf('?')>0) {
+            requestUrl  = requestUrl.substring(0,requestUrl.indexOf('?'));
+        }
+        return sysPermissionDao.findByUrl(requestUrl);
     }
 }

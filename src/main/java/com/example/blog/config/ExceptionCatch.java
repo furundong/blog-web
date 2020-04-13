@@ -2,12 +2,20 @@ package com.example.blog.config;
 
 import com.example.blog.entity.response.Result;
 import com.example.blog.entity.response.ResultCode;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@ControllerAdvice//控制器增强
+@ControllerAdvice//控制器增强/
 public class ExceptionCatch {
+
+    @ExceptionHandler(AccessDeniedException.class)
+    @ResponseBody
+    public Result accessDeniedException(Exception exception){
+        return new Result(ResultCode.UNAUTHORISE);
+    }
+
 
     //捕获Exception此类异常
     @ExceptionHandler(Exception.class)

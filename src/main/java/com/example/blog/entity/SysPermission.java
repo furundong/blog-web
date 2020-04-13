@@ -28,11 +28,14 @@ public class SysPermission implements Serializable {
     @GeneratedValue(generator = "idGenerator")
     private String id;
     /**
-    * 权限code
+    * 权限所需角色
     */
     private String permissionCode;
     /**
     * 权限名
     */
     private String permissionName;
+
+    private String url;
+    private Integer pid;
 }

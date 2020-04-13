@@ -14,11 +14,13 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-  devtools:
-    restart:
-      enabled: true
   mvc:                                     #表单格式
     date-format: yyyy-MM-dd HH:mm:ss
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss    #json字符串,前端-->后端
     time-zone: GMT+8
+logging:
+  level:
+    org.springframework.web: debug
+    com.howtodoinjava: INFO
+    org.hibernate: ERROR
