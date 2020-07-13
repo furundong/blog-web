@@ -61,6 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     CustomizeAbstractSecurityInterceptor securityInterceptor;
 
     //权限不足拦截器
+    @Resource
     CustomizeAccessDeniedHandler customizeAccessDeniedHandler;
 
     @Bean
@@ -76,6 +77,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable();
+        //这里的角色-权限关联关系， 开始拦截且处理
         http.authorizeRequests().withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
             @Override
             public <O extends FilterSecurityInterceptor> O postProcess(O o) {

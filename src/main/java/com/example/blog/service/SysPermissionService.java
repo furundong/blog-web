@@ -21,6 +21,7 @@ public class SysPermissionService {
     SysPermissionDao sysPermissionDao;
 
     public List<SysPermission> selectListByPath(String requestUrl) {
+        //如果这个url有带参数的，那么将它截取
         if (requestUrl.indexOf('?')>0) {
             requestUrl  = requestUrl.substring(0,requestUrl.indexOf('?'));
         }

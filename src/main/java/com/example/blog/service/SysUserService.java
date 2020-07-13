@@ -31,21 +31,21 @@ public class  SysUserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        SysUser byUsername = sysUserDao.findByUsername(username);
-        if(byUsername==null){
+        SysUser user = sysUserDao.findByUsername(username);
+        if(user==null){
             throw new UsernameNotFoundException("用户名不存在");
         }
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        List<String> roleByUserId = sysRoleDao.findRoleByUserId(byUsername.getId());
+        List<String> roleByUserId = sysRoleDao.findRoleByUserId(user.getId());
         for (String s1 : roleByUserId) {
             authorities.add(new SimpleGrantedAuthority(s1));
         }
-        return new User(byUsername.getUsername(),
-                byUsername.getPassword(),
-                byUsername.getStatus()==1, //账号是否可用,1为可用，其余为不可用
-                true,//账号是否过期
-                true,//密码是否过期
-                true,//账号是否被锁
+        return new User(user.getUsername(),
+                user.getPassword(),
+                user.getStatus(), //账号是否可用,1为可用，其余为不可用
+                user.getAccount(),//账号是否过期
+                user.getCredential(),//密码是否过期
+                user.getAccountLock(),//账号是否被锁
                 authorities);
     }
 }

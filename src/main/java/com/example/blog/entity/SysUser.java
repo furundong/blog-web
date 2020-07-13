@@ -36,7 +36,18 @@ public class SysUser implements Serializable {
     /**
     * 1开启0关闭
     */
-    private Integer status;
-
+    private Boolean status;
+    /**
+     * 1开启0关闭
+     */
+    private Boolean account;
+    /**
+     * 1开启0关闭
+     */
+    private Boolean credential;
+    /**
+     * 1开启0关闭
+     */
+    private Boolean accountLock;
 
 }

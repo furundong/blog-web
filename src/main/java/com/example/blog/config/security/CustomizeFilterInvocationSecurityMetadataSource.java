@@ -2,20 +2,20 @@ package com.example.blog.config.security;
 
 import com.example.blog.entity.SysPermission;
 import com.example.blog.service.SysPermissionService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.Collection;
 import java.util.List;
 
 @Component
 public class CustomizeFilterInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 
-    @Autowired
+    @Resource
     SysPermissionService sysPermissionService;
 
     @Override

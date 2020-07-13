@@ -26,7 +26,7 @@ public class CustomizeAuthenticationEntryPoint implements AuthenticationEntryPoi
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException exception) throws IOException, ServletException {
         Result result = new Result(ResultCode.FAIL);;
         if (exception instanceof InsufficientAuthenticationException) {
-            result = new Result(ResultCode.UNAUTHORISE);
+            result = new Result(ResultCode.UNAUTHENTICATED);
         }
         httpServletResponse.setContentType("text/json;charset=utf-8");
         httpServletResponse.getWriter().write(JSON.toJSONString(result));

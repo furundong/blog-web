@@ -20,7 +20,7 @@ public class CustomizeAccessDeniedHandler implements AccessDeniedHandler {
     public void handle(HttpServletRequest httpServletRequest, HttpServletResponse response, AccessDeniedException e) throws IOException, ServletException {
         response.setContentType("application/json;charset=utf-8");
         PrintWriter out = response.getWriter();
-        String result = JSON.toJSONString(new Result(ResultCode.SUCCESS, new Result(ResultCode.UNAUTHORISE)));
+        String result = JSON.toJSONString(new Result(ResultCode.UNAUTHORISE));
         out.write(result);
         out.flush();
         out.close();
