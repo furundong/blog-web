@@ -23,4 +23,11 @@ public interface SysRoleDao  extends JpaRepository<SysRole,String> {
     @Modifying
     @Transactional
     void deleteByIdIn(List<String> ids);
+
+    @Query(value = "SELECT r.ID,r.ROLE_NAME,r.ROLE_DESC\n" +
+            "FROM sys_user u\n" +
+            "\tLEFT JOIN sys_user_role ur ON u.id = ur.uid\n" +
+            "\tLEFT JOIN sys_role r on r.ID = ur.RID\n" +
+            "\tWHERE u.id = :id",nativeQuery = true)
+    List<SysRole> findAllRoleByUser(String id);
 }

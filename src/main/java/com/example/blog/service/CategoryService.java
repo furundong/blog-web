@@ -1,29 +1,28 @@
 package com.example.blog.service;
 
+import com.example.blog.dao.CategoryDao;
 import com.example.blog.entity.Category;
 import com.example.blog.entity.response.PageResult;
 import com.example.blog.entity.response.Result;
 import com.example.blog.entity.response.ResultCode;
-import com.example.blog.dao.CategoryDao;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.blog.utils.IdWorker;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class CategoryService {
 
-    @Autowired
+    @Resource
     CategoryDao categoryDao;
 
     public Result add(Category category) {
+        category.setId(IdWorker.genId());
         Category save = categoryDao.save(category);
-        if (save == null) {
-            throw new RuntimeException();
-        }
         return new Result(ResultCode.SUCCESS, save);
     }
 
@@ -39,9 +38,6 @@ public class CategoryService {
 
     public Result update(Category category) {
         Category save = categoryDao.save(category);
-        if (save == null) {
-            throw new RuntimeException();
-        }
         return new Result(ResultCode.SUCCESS, save);
     }
 

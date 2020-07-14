@@ -1,10 +1,8 @@
 package com.example.blog.entity;
 
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -24,16 +22,14 @@ public class SysRolePermission implements Serializable {
     * 角色编号
     */
     @Id
-    @GenericGenerator(name = "idGenerator", strategy = "uuid")
-    @GeneratedValue(generator = "idGenerator")
     private String id;
 
 
-    private Integer rid;
+    private String rid;
     /**
     * 权限编号
     */
-    private Integer pid;
+    private String pid;
 
 
 }

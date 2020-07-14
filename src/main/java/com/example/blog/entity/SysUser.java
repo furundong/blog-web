@@ -1,10 +1,9 @@
 package com.example.blog.entity;
 
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -18,12 +17,11 @@ import java.io.Serializable;
 @Data
 @Table
 @Entity
+@NoArgsConstructor
 public class SysUser implements Serializable {
     private static final long serialVersionUID = -68810786789081461L;
 
     @Id
-    @GenericGenerator(name = "idGenerator", strategy = "uuid")
-    @GeneratedValue(generator = "idGenerator")
     private String id;
     /**
     * 用户名称
@@ -50,4 +48,8 @@ public class SysUser implements Serializable {
      */
     private Boolean accountLock;
 
+    public SysUser(String id,String username) {
+        this.id = id;
+        this.username = username;
+    }
 }

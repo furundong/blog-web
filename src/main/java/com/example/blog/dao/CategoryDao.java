@@ -12,7 +12,7 @@ import java.util.List;
 public interface CategoryDao extends JpaRepository<Category,String> {
 
     //static final List<Class<?>> TYPES = Arrays.asList(Pageable.class, Sort.class);
-    Page<Category> findByCateNameContaining(String cateName, Pageable pageable); //this need use Pageable Interface
+    Page<Category> findByCateNameContaining(String cateName, Pageable pageable); //this need use Pageable Interface,and must be Pageable
 
 
     @Modifying

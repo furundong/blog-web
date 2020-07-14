@@ -7,6 +7,7 @@ spring:
     username: root
     password: root
     url: jdbc:mysql://localhost:3306/blog?characterEncoding=utf8&useSSL=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     generate-ddl: true
     database: mysql
@@ -24,3 +25,11 @@ logging:
     org.springframework.web: debug
     com.howtodoinjava: INFO
     org.hibernate: ERROR
+
+
+mybatis-plus:
+  type-aliases-package: com.example.blog.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+  mapper-locations: classpath:com/example/blog/mapper/xml/*.xml

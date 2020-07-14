@@ -1,8 +1,8 @@
 package com.example.blog.controller;
 
+import com.example.blog.entity.response.Result;
 import com.example.blog.service.SysRoleService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -13,7 +13,7 @@ import javax.annotation.Resource;
  * @since 2020-04-09 14:04:47
  */
 @RestController
-@RequestMapping("sysRole")
+@RequestMapping("role")
 public class SysRoleController {
     /**
      * 服务对象
@@ -21,5 +21,18 @@ public class SysRoleController {
     @Resource
     private SysRoleService sysRoleService;
 
+    @GetMapping("findAllRole")
+    public Result findAllRole() {
+        return sysRoleService.findAllRole();
+    }
 
+    @GetMapping("findAllRoleByUser/{id}")
+    public Result findAllRoleByUser(@PathVariable String id){
+        return sysRoleService.findAllRoleByUser(id);
+    }
+
+    @PostMapping("assignRole/{id}")
+    public Result assignRole(@PathVariable String id,String[] rolesId){
+        return sysRoleService.assignRole(rolesId,id);
+    }
 }
