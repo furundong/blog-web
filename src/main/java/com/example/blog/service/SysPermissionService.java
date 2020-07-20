@@ -2,7 +2,6 @@ package com.example.blog.service;
 
 
 import com.example.blog.dao.SysPermissionDao;
-import com.example.blog.entity.SysPermission;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,7 +19,7 @@ public class SysPermissionService {
     @Resource
     SysPermissionDao sysPermissionDao;
 
-    public List<SysPermission> selectListByPath(String requestUrl) {
+    public List<String> selectListByPath(String requestUrl) {
         //如果这个url有带参数的，那么将它截取
         if (requestUrl.indexOf('?')>0) {
             requestUrl  = requestUrl.substring(0,requestUrl.indexOf('?'));

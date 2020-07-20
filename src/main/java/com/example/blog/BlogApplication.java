@@ -10,7 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 @EntityScan("com.example.blog.entity")//扫描实体
-@MapperScan("com.example.blog.dao")
+@MapperScan("com.example.blog.mapper")
 public class BlogApplication {
 
     public static void main(String[] args) {

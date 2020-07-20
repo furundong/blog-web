@@ -1,5 +1,6 @@
 package com.example.blog.controller;
 
+import com.example.blog.entity.SysRole;
 import com.example.blog.entity.response.Result;
 import com.example.blog.service.SysRoleService;
 import org.springframework.web.bind.annotation.*;
@@ -35,4 +36,30 @@ public class SysRoleController {
     public Result assignRole(@PathVariable String id,String[] rolesId){
         return sysRoleService.assignRole(rolesId,id);
     }
+
+    @GetMapping("getData")
+    public Result getData(Integer pageNum, Integer pageSize, String roleName) {
+        return sysRoleService.findAll(pageNum, pageSize, roleName);
+    }
+
+    @PutMapping
+    public Result upd(@RequestBody SysRole role) {
+        return sysRoleService.upd(role);
+    }
+
+    @PostMapping
+    public Result save(@RequestBody SysRole role){
+        return sysRoleService.save(role);
+    }
+
+    @DeleteMapping("/{id}")
+    public Result delete(@PathVariable String id){
+        return sysRoleService.deleteById(id);
+    }
+
+    @DeleteMapping("batchDelete")
+    public Result batchDelete(String[] ids){
+        return sysRoleService.batchDelete(ids);
+    }
+
 }

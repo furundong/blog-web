@@ -1,6 +1,7 @@
 package com.example.blog;
 
 import com.example.blog.controller.SystemControllerReflect;
+import com.example.blog.entity.response.Result;
 import com.example.blog.service.SysRoleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +25,11 @@ public class BlogApplicationTests {
     @Resource
     MockHttpServletRequest request;
 
+    @Test
+    public void contextLoads() {
+        Result all = sysRoleService.findAll(0, 10, "");
+        System.out.println("all = " + all);
+    }
 
     @Test
     public void contextLoads2() {

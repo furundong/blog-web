@@ -2,7 +2,7 @@ package com.example.blog.service;
 
 import com.example.blog.dao.SysRoleDao;
 import com.example.blog.dao.SysUserDao;
-import com.example.blog.dao.SysUserMapper;
+import com.example.blog.mapper.SysUserMapper;
 import com.example.blog.dao.SysUserRoleDao;
 import com.example.blog.entity.SysUser;
 import com.example.blog.entity.response.PageResult;

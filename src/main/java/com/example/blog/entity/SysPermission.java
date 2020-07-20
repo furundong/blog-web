@@ -24,10 +24,6 @@ public class SysPermission implements Serializable {
     @Id
     private String id;
     /**
-    * 权限所需角色
-    */
-    private String permissionCode;
-    /**
     * 权限名
     */
     private String permissionName;
